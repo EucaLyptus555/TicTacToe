@@ -1,0 +1,132 @@
+
+table {
+    border-collapse: collapse;
+}
+
+tr {
+    width: 399px;
+}
+
+tr:first-child td{
+    border-top: 0;
+}
+
+tr:last-child td{
+    border-bottom: 0;
+}
+
+td:first-child {
+    border-left: 0;
+}
+
+td:last-child {
+    border-right: 0;
+}
+
+td {
+    width: 133px;
+    height: 133px;
+    border: solid 5px black;
+    position: relative;
+    cursor: pointer;
+}
+
+td:hover {
+    background-color: rgba(25, 221, 0, 0.1);
+}
+
+.shape {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    top: 26px;
+    left: 26px;  
+}
+
+.dnone {
+    display: none;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.playerPanel {
+    display: flex;
+    font-size: 32px;
+    margin-bottom: 32px;
+}
+
+.playerPanel img {
+    width: 60px;
+    height: 60px;
+    margin-right: 20px;
+}
+
+.playerPanel div{
+    display: flex;
+    align-items: center;
+    margin-left: 16px;
+    margin-right: 16px;
+}
+
+.inactive {
+    opacity: 0.5;
+}
+
+.horzontal {
+    height: 10px;
+    background-color: rgba(0, 0, 0, 0.2);
+    width: 350px;
+    position: relative;
+    transform: scaleX(0.0);
+    transform: scaleY(0.0);
+    transition: transform 225ms ease-in-out;
+    z-index: 1;
+}
+
+.vertical {
+    transform: rotate(90deg);
+    transform: scaleX(0.0);
+}
+
+.gameOver {
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 2;
+    animation: zoomIn 225ms ease-in-out;
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.restart {
+    border: 1px rgba(0, 0, 0, 1);
+    background-color: rgba(29, 12, 94, 1);
+    z-index: 2;
+    width: 300px;
+    height: 100px;
+    color: white;
+    font-size: 40px;
+    position: absolute;
+    bottom: 60px;
+}
+
+.restart:hover {
+    background-color: rgba(50, 35, 104, 1);
+    cursor: pointer;
+
+}
