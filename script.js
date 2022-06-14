@@ -35,7 +35,7 @@ function draw() {
 }
 
 function checkForWin() {
-    let winner;
+    let winner = checkFull();
     if (fields[0] == fields[1] && fields[1] == fields[2] && fields[0]) {
         winner = fields[0];
         document.getElementById('line0').style.transform = 'scaleX(1)';
@@ -57,7 +57,7 @@ function checkForWin() {
     }
     if (fields[1] == fields[4] && fields[4] == fields[7] && fields[1]) {
         winner = fields[1];
-        document.getElementById('line3').style.transform = 'rotate(90deg) scaleX(1)';
+        document.getElementById('line6').style.transform = 'rotate(90deg) scaleX(1)';
     }
     if (fields[2] == fields[5] && fields[5] == fields[8] && fields[2]) {
         winner = fields[2];
@@ -65,12 +65,13 @@ function checkForWin() {
     }
     if (fields[0] == fields[4] && fields[4] == fields[8] && fields[0]) {
         winner = fields[0];
-        document.getElementById('line6').style.transform = 'rotate(45deg) scaleX(1.2)';
+        document.getElementById('line7').style.transform = 'rotate(45deg) scaleX(1.2)';
     }
     if (fields[2] == fields[4] && fields[4] == fields[6] && fields[2]) {
         winner = fields[2];
-        document.getElementById('line8').style.transform = 'rotate(-45deg) scaleX(1.2)';
+        document.getElementById('line7').style.transform = 'rotate(-45deg) scaleX(1.2)';
     }
+    
     if (winner) {
         gameOver = true;
         setTimeout(function () {
@@ -81,13 +82,23 @@ function checkForWin() {
     }
 }
 
+function checkFull() {
+    let full = true;
+    for (let i=0;i<9;i++) {
+        if (!fields[i]) {
+            full = false;
+        }
+    }
+    return full;
+}
+
 function restart() {
     gameOver = false;
     document.getElementById('gameOver').classList.add('dnone');
     document.getElementById('restart').classList.add('dnone');
     fields = [];
     for (let i = 0; i < 8; i++) {
-        document.getElementById('line' + i).classList.add('dnone');
+        document.getElementById('line' + i).style.transform='scaleX(0)';
     }
     for (let i = 0; i < 9; i++) {
         document.getElementById('circle' + i).classList.add('dnone');
